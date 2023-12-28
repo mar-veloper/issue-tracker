@@ -7,11 +7,12 @@ import { useForm, Controller } from 'react-hook-form'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { If } from 'react-if'
+import { Else, If } from 'react-if'
 import { zodResolver } from '@hookform/resolvers/zod'
 import issueSchema from '@/app/schemas/issue.schema'
 import { z } from 'zod'
 import ErrorMessage from '@/app/components/ErrorMessage'
+import Spinner from '@/app/components/Spinner'
 
 type IssueForm = z.infer<typeof issueSchema>
 
@@ -27,6 +28,7 @@ const NewIssuePage = () => {
   })
 
   const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   return (
     <div className="max-w-xl ">
@@ -38,10 +40,14 @@ const NewIssuePage = () => {
       <form
         onSubmit={handleSubmit(async (data) => {
           try {
+            setIsSubmitting(true)
+
             await axios.post('/api/issues', data)
+            setIsSubmitting(false)
             router.push('/')
           } catch (error) {
             setError('An unexpected error occurred.')
+            setIsSubmitting(false)
           }
         })}
         className="space-y-3"
@@ -58,7 +64,15 @@ const NewIssuePage = () => {
           )}
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
-        <Button>Submit New Issue</Button>
+        <Button disabled={isSubmitting}>
+          <If condition={isSubmitting}>
+            <>
+              Submitting...
+              <Spinner />
+            </>
+            <Else>Submit New Issue</Else>
+          </If>
+        </Button>
       </form>
     </div>
   )
