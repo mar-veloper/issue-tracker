@@ -1,13 +1,15 @@
 import { Text } from '@radix-ui/themes'
 import React, { PropsWithChildren } from 'react'
-import { If } from 'react-if'
+import { If, Then } from 'react-if'
 
 const ErrorMessage = ({ children }: PropsWithChildren) => {
   return (
     <If condition={!!children}>
-      <Text color="red" as="p">
-        {children}
-      </Text>
+      <Then>
+        <Text color="red" as="p">
+          {children}
+        </Text>
+      </Then>
     </If>
   )
 }

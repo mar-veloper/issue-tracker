@@ -7,7 +7,7 @@ import { useForm, Controller } from 'react-hook-form'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { Else, If } from 'react-if'
+import { Else, If, Then } from 'react-if'
 import { zodResolver } from '@hookform/resolvers/zod'
 import issueSchema from '@/app/schemas/issue.schema'
 import { z } from 'zod'
@@ -46,9 +46,11 @@ const NewIssuePage = () => {
   return (
     <div className="max-w-xl ">
       <If condition={error}>
-        <Callout.Root color="red" className="mb-5">
-          <Callout.Text>{error}</Callout.Text>
-        </Callout.Root>
+        <Then>
+          <Callout.Root color="red" className="mb-5">
+            <Callout.Text>{error}</Callout.Text>
+          </Callout.Root>
+        </Then>
       </If>
       <form onSubmit={onSubmit} className="space-y-3">
         <TextField.Root>
@@ -65,10 +67,10 @@ const NewIssuePage = () => {
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
         <Button disabled={isSubmitting}>
           <If condition={isSubmitting}>
-            <>
+            <Then>
               Submitting...
               <Spinner />
-            </>
+            </Then>
             <Else>Submit New Issue</Else>
           </If>
         </Button>
