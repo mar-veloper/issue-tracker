@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import schema from './issue.schema'
+import schema from '../../schemas/issue.schema'
 import prisma from '@/prisma/client'
 
 export async function POST(request: NextRequest) {
