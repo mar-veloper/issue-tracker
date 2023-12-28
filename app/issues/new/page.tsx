@@ -11,6 +11,7 @@ import { If } from 'react-if'
 import { zodResolver } from '@hookform/resolvers/zod'
 import issueSchema from '@/app/schemas/issue.schema'
 import { z } from 'zod'
+import ErrorMessage from '@/app/components/ErrorMessage'
 
 type IssueForm = z.infer<typeof issueSchema>
 
@@ -48,12 +49,7 @@ const NewIssuePage = () => {
         <TextField.Root>
           <TextField.Input {...register('title')} placeholder="Title" />
         </TextField.Root>
-
-        <If condition={errors.title !== undefined}>
-          <Text color="red" as="p">
-            {errors.title?.message}
-          </Text>
-        </If>
+        <ErrorMessage>{errors.title?.message}</ErrorMessage>
         <Controller
           name="description"
           control={control}
@@ -61,11 +57,7 @@ const NewIssuePage = () => {
             <SimpleMDE placeholder="Description" {...field} />
           )}
         />
-        <If condition={errors.description !== undefined}>
-          <Text color="red" as="p">
-            {errors.description?.message}
-          </Text>
-        </If>
+        <ErrorMessage>{errors.description?.message}</ErrorMessage>
         <Button>Submit New Issue</Button>
       </form>
     </div>
