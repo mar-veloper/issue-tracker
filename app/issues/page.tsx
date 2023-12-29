@@ -7,7 +7,13 @@ import delay from 'delay'
 import IssueActions from './IssueActions'
 
 const IssuesPage = async () => {
-  const issues = await prisma.issue.findMany()
+  const count = await prisma.issue.count()
+  const issues = await prisma.issue.findMany({
+    take: 10,
+    orderBy: { status: 'desc' },
+  })
+  const pages = Math.ceil(count / 10)
+
   await delay(2000)
 
   return (

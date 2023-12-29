@@ -5,7 +5,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import IssueActions from './IssueActions'
 
 const LoadingIssuesPage = () => {
-  const issues = [1, 2, 3, 4, 5]
+  const issues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   return (
     <div>
@@ -27,16 +27,16 @@ const LoadingIssuesPage = () => {
           {issues.map((issue) => (
             <Table.Row key={issue}>
               <Table.Cell>
-                <Skeleton />
+                <Skeleton width={'150px'} />
                 <div className="block md:hidden">
-                  <Skeleton />
+                  <Skeleton width={'50px'} />
                 </div>
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
-                <Skeleton />
+                <Skeleton width={'50px'} />
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
-                <Skeleton />
+                <Skeleton width={'300px'} />
               </Table.Cell>
             </Table.Row>
           ))}
