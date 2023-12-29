@@ -1,21 +1,21 @@
 'use client'
 
-import ErrorMessage from '@/app/components/ErrorMessage'
-import Spinner from '@/app/components/Spinner'
+import { ErrorMessage, Skeleton, Spinner } from '@/app/components'
 import issueSchema from '@/app/schemas/issue.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Callout, TextField } from '@radix-ui/themes'
 import axios from 'axios'
 import 'easymde/dist/easymde.min.css'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { Else, If, Then } from 'react-if'
-import dynamic from 'next/dynamic'
 import { z } from 'zod'
 
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
   ssr: false,
+  loading: () => <Skeleton height="400px" className="my-3" />,
 })
 
 type IssueForm = z.infer<typeof issueSchema>

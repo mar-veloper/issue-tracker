@@ -1,9 +1,6 @@
-import { Table } from '@radix-ui/themes'
-import Link from '@/app/components/Link'
-import React from 'react'
+import { Link, IssueStatusBadge } from '@/app/components'
 import prisma from '@/prisma/client'
-import IssueStatusBadge from '../components/IssueStatusBadge'
-import delay from 'delay'
+import { Table } from '@radix-ui/themes'
 import IssueActions from './IssueActions'
 
 const IssuesPage = async () => {
@@ -13,8 +10,6 @@ const IssuesPage = async () => {
     orderBy: { status: 'desc' },
   })
   const pages = Math.ceil(count / 10)
-
-  await delay(500)
 
   return (
     <div>
