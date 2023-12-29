@@ -1,15 +1,12 @@
-import { Link, IssueStatusBadge } from '@/app/components'
+import { IssueStatusBadge, Link } from '@/app/components'
 import prisma from '@/prisma/client'
 import { Table } from '@radix-ui/themes'
 import IssueActions from './IssueActions'
 
 const IssuesPage = async () => {
-  const count = await prisma.issue.count()
   const issues = await prisma.issue.findMany({
-    take: 10,
     orderBy: { status: 'desc' },
   })
-  const pages = Math.ceil(count / 10)
 
   return (
     <div>
@@ -48,5 +45,7 @@ const IssuesPage = async () => {
     </div>
   )
 }
+
+export const dynamic = 'force-dynamic'
 
 export default IssuesPage

@@ -51,9 +51,10 @@ const IssueForm = ({ issue }: Props) => {
         setIsSubmitting(false)
         router.push(`/issues/${updatedIssue.id}`)
       } else {
-        const { data: newIssue } = await axios.post('/api/issues', data)
+        await axios.post('/api/issues', data)
         setIsSubmitting(false)
-        router.push(`/issues/${newIssue.id}`)
+        router.push(`/issues`)
+        router.refresh()
       }
     } catch (error) {
       setError('An unexpected error occurred.')

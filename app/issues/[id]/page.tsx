@@ -9,10 +9,10 @@ interface Props {
     id: string
   }
 }
-const DetailPage = async ({ params }: Props) => {
+const IssueDetailPage = async ({ params: { id } }: Props) => {
   const issue = await prisma.issue.findUnique({
     where: {
-      id: params.id,
+      id,
     },
   })
 
@@ -36,4 +36,4 @@ const DetailPage = async ({ params }: Props) => {
   )
 }
 
-export default DetailPage
+export default IssueDetailPage
