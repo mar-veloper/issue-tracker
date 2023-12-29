@@ -8,7 +8,7 @@ interface Args {
   }
 }
 
-export async function PUT(request: NextRequest, { params: { id } }: Args) {
+export async function PATCH(request: NextRequest, { params: { id } }: Args) {
   const body = await request.json()
 
   const validation = issueSchema.safeParse(body)

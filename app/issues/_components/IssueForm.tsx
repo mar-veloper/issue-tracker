@@ -43,9 +43,18 @@ const IssueForm = ({ issue }: Props) => {
     try {
       setIsSubmitting(true)
 
-      await axios.post('/api/issues', data)
-      setIsSubmitting(false)
-      router.push('/')
+      if (issue) {
+        const { data: updatedIssue } = await axios.patch(
+          `/api/issues/${issue.id}`,
+          data
+        )
+        setIsSubmitting(false)
+        router.push(`/issues/${updatedIssue.id}`)
+      } else {
+        const { data: newIssue } = await axios.post('/api/issues', data)
+        setIsSubmitting(false)
+        router.push(`/issues/${newIssue.id}`)
+      }
     } catch (error) {
       setError('An unexpected error occurred.')
       setIsSubmitting(false)
@@ -82,10 +91,10 @@ const IssueForm = ({ issue }: Props) => {
         <Button disabled={isSubmitting}>
           <If condition={isSubmitting}>
             <Then>
-              Submitting...
+              {issue ? 'Updating...' : 'Submitting...'}
               <Spinner />
             </Then>
-            <Else>Submit New Issue</Else>
+            <Else>{issue ? 'Update Issue' : 'Submit New Issue'}</Else>
           </If>
         </Button>
       </form>
