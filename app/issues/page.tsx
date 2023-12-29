@@ -14,7 +14,7 @@ const IssuesPage = async () => {
   })
   const pages = Math.ceil(count / 10)
 
-  await delay(2000)
+  await delay(500)
 
   return (
     <div>
