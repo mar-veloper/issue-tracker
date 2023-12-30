@@ -4,7 +4,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import NavBar from './NavBar'
-import { Theme, ThemePanel } from '@radix-ui/themes'
+import { Container, Theme, ThemePanel } from '@radix-ui/themes'
 import { SessionProvider } from 'next-auth/react'
 import AuthProvider from './auth/Provider'
 
@@ -29,7 +29,9 @@ export default function RootLayout({
         <AuthProvider>
           <Theme appearance="light" accentColor="orange" grayColor="gray">
             <NavBar />
-            <main className="max-w-3xl mx-auto p-5">{children}</main>
+            <main className="p-5">
+              <Container>{children}</Container>
+            </main>
             {/* <ThemePanel /> */}
           </Theme>
         </AuthProvider>
