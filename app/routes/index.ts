@@ -1,17 +1,4 @@
-interface Routes {
-  HOMEPAGE: string
-  ISSUES: {
-    MAIN: string
-    LIST: string
-    EDIT: string
-    NEW: string
-  }
-  API: {
-    ISSUES: string
-  }
-}
-
-const routes: Routes = {
+const routes = {
   HOMEPAGE: '/',
   ISSUES: {
     MAIN: '/issues',
@@ -21,6 +8,10 @@ const routes: Routes = {
   },
   API: {
     ISSUES: '/api/issues',
+    AUTH: {
+      SIGN_IN: '/api/auth/signin',
+      SIGN_OUT: '/api/auth/signout',
+    },
   },
 }
 
