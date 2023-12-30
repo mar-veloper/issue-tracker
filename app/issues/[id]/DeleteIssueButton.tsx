@@ -1,7 +1,7 @@
 'use client'
 import { Spinner } from '@/app/components'
 import { TrashIcon } from '@radix-ui/react-icons'
-import { Button } from '@radix-ui/themes'
+import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Else, If, Then } from 'react-if'
@@ -31,23 +31,47 @@ const DeleteIssueButton = ({ issueId }: Props) => {
   }
 
   return (
-    <Button
-      color="red"
-      onClick={handleDelete}
-      disabled={isDeleting}
-      className="hover:cursor-pointer"
-    >
-      <If condition={isDeleting}>
-        <Then>
-          <Spinner />
-          Deleting...
-        </Then>
-        <Else>
+    <AlertDialog.Root>
+      <AlertDialog.Trigger>
+        <Button color="red">
           <TrashIcon />
           Delete Issue
-        </Else>
-      </If>
-    </Button>
+        </Button>
+      </AlertDialog.Trigger>
+      <AlertDialog.Content>
+        <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
+        <AlertDialog.Description>
+          Are you sure you want to delete this issue? This action cannot be
+          undone.
+        </AlertDialog.Description>
+        <Flex mt="4" gap="3">
+          <AlertDialog.Cancel>
+            <Button variant="soft" color="gray">
+              Cancel
+            </Button>
+          </AlertDialog.Cancel>
+          <AlertDialog.Action>
+            <Button
+              color="red"
+              onClick={handleDelete}
+              disabled={isDeleting}
+              className="hover:cursor-pointer"
+            >
+              <If condition={isDeleting}>
+                <Then>
+                  <Spinner />
+                  Deleting...
+                </Then>
+                <Else>
+                  <TrashIcon />
+                  Delete Issue
+                </Else>
+              </If>
+            </Button>
+          </AlertDialog.Action>
+        </Flex>
+      </AlertDialog.Content>
+    </AlertDialog.Root>
   )
 }
 
