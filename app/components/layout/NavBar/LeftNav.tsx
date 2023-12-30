@@ -27,8 +27,6 @@ const LeftNav = () => {
       </Link>
       <ul className="flex items-center space-x-6">
         {links.map((link) => {
-          console.log({ href: link.href, currentPath })
-
           const isActive = link.href === currentPath
           return (
             <li key={link.href}>
@@ -36,7 +34,7 @@ const LeftNav = () => {
                 href={link.href}
                 className={classNames({
                   'nav-link': true,
-                  '!text-zinc-900': isActive,
+                  '--active': isActive,
                 })}
               >
                 {link.label}
