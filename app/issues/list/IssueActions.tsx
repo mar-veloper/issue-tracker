@@ -6,9 +6,9 @@ import React from 'react'
 const IssueActions = () => {
   return (
     <div className="mb-5">
-      <Button>
-        <Link href={routes.ISSUES.NEW}>New Issue</Link>
-      </Button>
+      <Link href={routes.ISSUES.NEW}>
+        <Button>New Issue</Button>
+      </Link>
     </div>
   )
 }
