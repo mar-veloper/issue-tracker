@@ -5,9 +5,9 @@ import { Skeleton } from '@/app/components'
 const IssueFormSkeleton = () => {
   return (
     <Box className="max-w-3xl">
-      <Skeleton width="16rem" />
-      <Skeleton height="16rem" className="my-5" />
-      <Skeleton width="10rem" height="3rem" />
+      <Skeleton width="576px" height="32px" />
+      <Skeleton width="576px" height="365px" className="mt-3 mb-10" />
+      <Skeleton width="144px" height="32px" />
     </Box>
   )
 }
