@@ -1,5 +1,6 @@
 'use client'
 import { Spinner } from '@/app/components'
+import routes from '@/app/routes'
 import { TrashIcon } from '@radix-ui/react-icons'
 import { AlertDialog, Box, Button, Flex } from '@radix-ui/themes'
 import { useRouter } from 'next/navigation'
@@ -38,12 +39,11 @@ const DeleteIssueButton = ({ issueId }: Props) => {
   const deleteIssue = async () => {
     try {
       setIsDeleting(true)
-      await fetch(`/api/issues/${issueId}`, {
+      await fetch(`${routes.API.ISSUES}/${issueId}`, {
         method: 'DELETE',
       })
-      setIsDeleting(false)
 
-      router.push('/issues')
+      router.push(routes.ISSUES.LIST)
       router.refresh()
     } catch (error) {
       setIsDeleting(false)

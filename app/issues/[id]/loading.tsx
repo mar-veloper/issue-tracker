@@ -1,7 +1,7 @@
-import { Box, Card, Flex, Heading } from '@radix-ui/themes'
 import { Skeleton } from '@/app/components'
+import { Box, Card, Flex, Heading } from '@radix-ui/themes'
 
-const LoadingIssueDetailPage = async () => {
+const IssueDetailPageLoading = async () => {
   return (
     <Box>
       <Heading>
@@ -19,4 +19,4 @@ const LoadingIssueDetailPage = async () => {
   )
 }
 
-export default LoadingIssueDetailPage
+export default IssueDetailPageLoading

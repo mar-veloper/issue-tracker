@@ -1,6 +1,7 @@
 'use client'
 
 import { ErrorMessage, Spinner } from '@/app/components'
+import routes from '@/app/routes'
 import issueSchema from '@/app/schemas/issue.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Issue } from '@prisma/client'
@@ -40,15 +41,15 @@ const IssueForm = ({ issue }: Props) => {
 
       if (issue) {
         const { data: updatedIssue } = await axios.patch(
-          `/api/issues/${issue.id}`,
+          `${routes.API.ISSUES}/${issue.id}`,
           data
         )
         setIsSubmitting(false)
-        router.push(`/issues/${updatedIssue.id}`)
+        router.push(`${routes.ISSUES.MAIN}/${updatedIssue.id}`)
       } else {
-        await axios.post('/api/issues', data)
+        await axios.post(routes.API.ISSUES, data)
         setIsSubmitting(false)
-        router.push(`/issues`)
+        router.push(`${routes.ISSUES.LIST}`)
         router.refresh()
       }
     } catch (error) {
