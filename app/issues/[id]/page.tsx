@@ -6,6 +6,7 @@ import EditIssueButton from './EditIssueButton'
 import IssueDetails from './IssueDetails'
 import { getServerSession } from 'next-auth'
 import authOptions from '@/app/auth/authOptions'
+import AssigneeSelect from './AssigneeSelect'
 
 interface Props {
   params: {
@@ -38,6 +39,7 @@ const IssueDetailPage = async ({ params: { id } }: Props) => {
       {session && (
         <Box className="md:col-span-3">
           <Grid gap="2" width="auto">
+            <AssigneeSelect />
             <EditIssueButton issueId={issue.id} />
             <DeleteIssueButton issueId={issue.id} />
           </Grid>
