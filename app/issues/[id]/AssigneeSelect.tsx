@@ -1,13 +1,10 @@
 'use client'
-import routes from '@/app/routes'
-import { User } from '@prisma/client'
-import { Select } from '@radix-ui/themes'
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
 import { Skeleton } from '@/app/components'
+import routes from '@/app/routes'
 import { Issue } from '@prisma/client'
+import { Select } from '@radix-ui/themes'
+import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
-import useUser from './useUsers'
 import useUsers from './useUsers'
 
 interface Props {
