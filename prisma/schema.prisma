@@ -11,14 +11,14 @@ datasource db {
 }
 
 model Issue {
-  id                String   @id @default(uuid())
-  title             String   @db.VarChar(255)
-  description       String   @db.Text
-  status            Status   @default(OPEN)
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  assisgnedToUserId String?  @db.VarChar(255)
-  assignedToUser    User?    @relation(fields: [assisgnedToUserId], references: [id])
+  id               String   @id @default(uuid())
+  title            String   @db.VarChar(255)
+  description      String   @db.Text
+  status           Status   @default(OPEN)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  assignedToUserId String?  @db.VarChar(255)
+  assignedToUser   User?    @relation(fields: [assignedToUserId], references: [id])
 }
 
 enum Status {

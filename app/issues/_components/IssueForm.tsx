@@ -2,7 +2,7 @@
 
 import { ErrorMessage, Spinner } from '@/app/components'
 import routes from '@/app/routes'
-import issueSchema from '@/app/schemas/issue.schema'
+import { issueSchema } from '@/app/schemas/issue.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Issue } from '@prisma/client'
 import { Button, Callout, TextField } from '@radix-ui/themes'
