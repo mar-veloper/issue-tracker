@@ -7,25 +7,15 @@ import axios from 'axios'
 import { Skeleton } from '@/app/components'
 import { Issue } from '@prisma/client'
 import toast, { Toaster } from 'react-hot-toast'
+import useUser from './useUsers'
+import useUsers from './useUsers'
 
 interface Props {
   issue: Issue
 }
 
 const AssigneeSelect = ({ issue }: Props) => {
-  const {
-    data: users,
-    error,
-    isLoading,
-  } = useQuery<User[]>({
-    queryKey: ['users'],
-    queryFn: async () => {
-      const { data } = await axios.get<User[]>(`${routes.API.USERS}`)
-      return data
-    },
-    staleTime: 60 * 1000,
-    retry: 3,
-  })
+  const { data: users, error, isLoading } = useUsers()
 
   if (isLoading) return <Skeleton height="32px" />
 
