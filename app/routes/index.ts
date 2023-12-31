@@ -12,6 +12,7 @@ const routes = {
       SIGN_IN: '/api/auth/signin',
       SIGN_OUT: '/api/auth/signout',
     },
+    USERS: '/api/users',
   },
 }
 
