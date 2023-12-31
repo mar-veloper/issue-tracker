@@ -39,7 +39,7 @@ const IssueDetailPage = async ({ params: { id } }: Props) => {
       {session && (
         <Box className="md:col-span-3">
           <Grid gap="2" width="auto">
-            <AssigneeSelect />
+            <AssigneeSelect issue={issue} />
             <EditIssueButton issueId={issue.id} />
             <DeleteIssueButton issueId={issue.id} />
           </Grid>
