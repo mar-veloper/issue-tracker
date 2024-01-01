@@ -2,17 +2,17 @@ import { Flex, Text } from '@radix-ui/themes'
 import React from 'react'
 
 interface Props {
-  itemCount: number
-  pageSize: number
+  count: number
+  maxPage: number
   currentPage: number
 }
 
-const Pagination = ({ currentPage, itemCount, pageSize }: Props) => {
-    
+const Pagination = ({ currentPage, count, maxPage }: Props) => {
   return (
     <Flex>
-      <Text>Page {currentPage}</Text>
-
+      <Text>
+        Page {currentPage} of {maxPage}. Total items: {count}
+      </Text>
     </Flex>
   )
 }
