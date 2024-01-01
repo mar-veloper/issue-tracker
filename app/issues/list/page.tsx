@@ -10,7 +10,7 @@ import { ArrowDownIcon, ArrowUpIcon } from '@radix-ui/react-icons'
 interface Props {
   searchParams: {
     status: Status
-    sort: keyof Issue
+    sortBy: keyof Issue
     sortOrder: 'asc' | 'desc'
   }
 }
@@ -22,6 +22,8 @@ interface Column {
 }
 
 const IssuesPage = async ({ searchParams }: Props) => {
+  const { sortBy, sortOrder, status } = searchParams
+
   const columns: Column[] = [
     {
       label: 'Issue',
@@ -40,39 +42,36 @@ const IssuesPage = async ({ searchParams }: Props) => {
   ]
 
   const statuses = Object.values(Status)
-  const status = statuses.includes(searchParams.status)
-    ? searchParams.status
-    : undefined
+  const queryStatus = statuses.includes(status) ? status : undefined
 
-  const isSortedByTitle = searchParams.sort === 'title'
+  const isSortedByTitle = sortBy === 'title'
   const defaultSortOrder = isSortedByTitle ? 'asc' : 'desc'
 
   const isOrderByKeyValid = columns
     .map((column) => column.value)
-    .includes(searchParams.sort)
+    .includes(sortBy)
 
-  const orderByKey = isOrderByKeyValid ? searchParams.sort : 'createdAt'
+  const orderByKey = isOrderByKeyValid ? sortBy : 'createdAt'
 
-  const querySortOrder = ['asc', 'desc'].includes(searchParams.sortOrder)
-    ? searchParams.sortOrder
+  const querySortOrder = ['asc', 'desc'].includes(sortOrder)
+    ? sortOrder
     : undefined
 
   const activeSortOrder = querySortOrder || defaultSortOrder
-
-  const issues = await prisma.issue.findMany({
-    where: {
-      status,
-    },
-    orderBy: {
-      [orderByKey]: activeSortOrder,
-    },
-  })
-
   const isSortAscending = activeSortOrder === 'asc'
 
   const toggleSortOrder = () => (isSortAscending ? 'desc' : 'asc')
   const renderArrowIcon = () =>
     isSortAscending ? <ArrowUpIcon /> : <ArrowDownIcon />
+
+  const issues = await prisma.issue.findMany({
+    where: {
+      status: queryStatus,
+    },
+    orderBy: {
+      [orderByKey]: activeSortOrder,
+    },
+  })
 
   return (
     <div>
@@ -81,7 +80,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
         <Table.Header>
           <Table.Row>
             {columns.map((column) => {
-              const isSortActive = searchParams.sort === column.value
+              const isSortActive = sortBy === column.value
               const sortOrder = isSortActive
                 ? toggleSortOrder()
                 : defaultSortOrder
@@ -94,7 +93,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
                     href={{
                       query: {
                         ...searchParams,
-                        sort: column.value,
+                        sortBy: column.value,
                         sortOrder,
                       },
                     }}
