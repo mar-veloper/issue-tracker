@@ -45,8 +45,13 @@ const IssuesPage = async ({ searchParams }: Props) => {
     : undefined
 
   const isSortedByTitle = searchParams.sort === 'title'
-  const orderByKey = searchParams.sort || 'createdAt'
   const defaultSortOrder = isSortedByTitle ? 'asc' : 'desc'
+
+  const isOrderByKeyValid = columns
+    .map((column) => column.value)
+    .includes(searchParams.sort)
+
+  const orderByKey = isOrderByKeyValid ? searchParams.sort : 'createdAt'
 
   const querySortOrder = ['asc', 'desc'].includes(searchParams.sortOrder)
     ? searchParams.sortOrder
