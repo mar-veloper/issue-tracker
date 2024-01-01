@@ -48,20 +48,22 @@ const IssuesPage = async ({ searchParams }: Props) => {
   const orderByKey = searchParams.sort || 'createdAt'
   const defaultSortOrder = isSortedByTitle ? 'asc' : 'desc'
 
-  const activeSortOrder = ['asc', 'desc'].includes(searchParams.sortOrder)
+  const querySortOrder = ['asc', 'desc'].includes(searchParams.sortOrder)
     ? searchParams.sortOrder
     : undefined
+
+  const activeSortOrder = querySortOrder || defaultSortOrder
 
   const issues = await prisma.issue.findMany({
     where: {
       status,
     },
     orderBy: {
-      [orderByKey]: activeSortOrder || defaultSortOrder,
+      [orderByKey]: activeSortOrder,
     },
   })
 
-  const isSortAscending = searchParams.sortOrder === 'asc'
+  const isSortAscending = activeSortOrder === 'asc'
 
   const toggleSortOrder = () => (isSortAscending ? 'desc' : 'asc')
   const renderArrowIcon = () =>
