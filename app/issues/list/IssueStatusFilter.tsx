@@ -34,8 +34,7 @@ const IssueStatusFilter = () => {
 
   const queryStatus = searchParams.get('status')
 
-  const defaultStatus = (queryStatus as Status | null) || 'ALL'
-
+  const defaultStatus = Status[queryStatus as keyof typeof Status] || 'ALL'
   const sortBy = searchParams.get('sortBy')
   const sortOrder = searchParams.get('sortOrder')
 
@@ -68,7 +67,6 @@ const IssueStatusFilter = () => {
             key={status.label}
             value={status.value || 'ALL'}
             disabled={!status.value}
-            className="!cursor-pointer"
           >
             {status.label}
           </Select.Item>
