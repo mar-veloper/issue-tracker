@@ -3,9 +3,24 @@ import prisma from '@/prisma/client'
 import { Table } from '@radix-ui/themes'
 import IssueActions from './IssueActions'
 import routes from '@/app/routes'
+import { Status } from '@prisma/client'
 
-const IssuesPage = async () => {
+interface Props {
+  searchParams: {
+    status: Status
+  }
+}
+
+const IssuesPage = async ({ searchParams }: Props) => {
+  const statuses = Object.values(Status)
+  const status = statuses.includes(searchParams.status)
+    ? searchParams.status
+    : undefined
+
   const issues = await prisma.issue.findMany({
+    where: {
+      status,
+    },
     orderBy: { status: 'desc' },
   })
 
