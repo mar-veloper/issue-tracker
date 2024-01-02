@@ -1,10 +1,10 @@
 'use client'
 import {
   IssueDataProps,
-  IssueQuery,
   IssueSortBy,
   IssueSortOrder,
 } from '@/app/types/issue.types'
+import { useSearchParams } from 'next/navigation'
 import React, { ReactNode, createContext, useContext } from 'react'
 import useIssues from './useIssues'
 
@@ -17,36 +17,13 @@ const IssueContext = createContext<IssueContextType>({} as IssueContextType)
 
 interface IssueProviderProps {
   children: ReactNode
-  searchParams: IssueQuery
 }
 
 export const IssueContextProvider: React.FC<IssueProviderProps> = ({
   children,
-  searchParams,
 }) => {
-  //   const searchParams = useSearchParams()
-
-  //   const queryStatus = searchParams.get('status')
-  //   const queryPage = searchParams.get('page')
-  //   const queryLimit = searchParams.get('limit')
-  //   const querySortBy = searchParams.get('sortBy')
-  //   const querySortOrder = searchParams.get('sortOrder')
-
-  //   const buildQueryParams = () => {
-  //     const params = new URLSearchParams({
-  //       ...searchParams,
-  //     })
-  //     if (queryStatus) params.set('status', queryStatus)
-  //     if (queryPage) params.set('page', queryPage)
-  //     if (queryLimit) params.set('limit', queryLimit)
-  //     if (querySortBy) params.set('sortBy', querySortBy)
-  //     if (querySortOrder) params.set('sortOrder', querySortOrder)
-  //     return params
-  //   }
-
-  const params = new URLSearchParams({
-    ...searchParams,
-  })
+  const searchParams = useSearchParams()
+  const params = new URLSearchParams(searchParams)
   const query = params.size ? `${params.toString()}` : ''
   const { data, error, isLoading } = useIssues(query)
 

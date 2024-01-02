@@ -1,8 +1,11 @@
 import { IssueQuery } from '@/app/types/issue.types'
 import IssueTable from '../_components/IssueTable'
+import IssueTableBody from '../_components/IssueTable/IssueTableBody'
+import IssueTableHeader from '../_components/IssueTable/IssueTableHeader'
 import IssueActions from './IssueActions'
 import { IssueContextProvider } from './IssueContext'
 import IssuePagination from './IssuePagination'
+import { Box } from '@radix-ui/themes'
 
 interface Props {
   searchParams: IssueQuery
@@ -10,12 +13,15 @@ interface Props {
 
 const IssuesPage = async ({ searchParams }: Props) => {
   return (
-    <IssueContextProvider searchParams={searchParams}>
-      <div>
+    <IssueContextProvider>
+      <Box>
         <IssueActions />
-        <IssueTable searchParams={searchParams} />
+        <IssueTable>
+          <IssueTableHeader searchParams={searchParams} />
+          <IssueTableBody />
+        </IssueTable>
         <IssuePagination />
-      </div>
+      </Box>
     </IssueContextProvider>
   )
 }
