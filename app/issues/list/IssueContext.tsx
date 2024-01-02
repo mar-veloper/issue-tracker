@@ -1,14 +1,10 @@
 'use client'
-import routes from '@/app/routes'
 import {
   IssueDataProps,
   IssueQuery,
   IssueSortBy,
   IssueSortOrder,
 } from '@/app/types/issue.types'
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
-import { useSearchParams } from 'next/navigation'
 import React, { ReactNode, createContext, useContext } from 'react'
 import useIssues from './useIssues'
 
