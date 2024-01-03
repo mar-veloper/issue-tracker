@@ -9,12 +9,6 @@ import { Flex, Table } from '@radix-ui/themes'
 import NextLink from 'next/link'
 import { useIssueContext } from '../../list/IssueContext'
 
-interface Column {
-  label: string
-  value: IssueSortBy
-  className?: string
-}
-
 interface Props {
   searchParams: IssueQuery
 }
@@ -25,23 +19,6 @@ const IssueTableHeader = ({ searchParams }: Props) => {
     sortBy: currentSortBy,
     sortOrder,
   } = useIssueContext()
-
-  const columns: Column[] = [
-    {
-      label: 'Issue',
-      value: IssueSortBy.title,
-    },
-    {
-      label: 'Status',
-      value: IssueSortBy.status,
-      className: 'hidden md:table-cell',
-    },
-    {
-      label: 'Created',
-      value: IssueSortBy.createdAt,
-      className: 'hidden md:table-cell text-right',
-    },
-  ]
 
   const renderArrowIcon = () =>
     sortOrder === IssueSortOrder.asc ? <ArrowUpIcon /> : <ArrowDownIcon />
@@ -86,3 +63,26 @@ const IssueTableHeader = ({ searchParams }: Props) => {
 }
 
 export default IssueTableHeader
+
+interface Column {
+  label: string
+  value: IssueSortBy
+  className?: string
+}
+
+const columns: Column[] = [
+  {
+    label: 'Issue',
+    value: IssueSortBy.title,
+  },
+  {
+    label: 'Status',
+    value: IssueSortBy.status,
+    className: 'hidden md:table-cell',
+  },
+  {
+    label: 'Created',
+    value: IssueSortBy.createdAt,
+    className: 'hidden md:table-cell text-right',
+  },
+]
