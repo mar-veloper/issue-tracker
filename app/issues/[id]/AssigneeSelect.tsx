@@ -20,7 +20,7 @@ const AssigneeSelect = ({ issue }: Props) => {
 
   const handleAssigneeChange = (userId: string) =>
     axios
-      .patch(`${routes.API.ISSUES}/${issue.id}`, {
+      .patch(`${routes.API.ISSUES.MAIN}/${issue.id}`, {
         assignedToUserId: userId === 'unassigned' ? null : userId,
       })
       .catch(() => toast.error('An unexpected error occurred.'))

@@ -41,13 +41,13 @@ const IssueForm = ({ issue }: Props) => {
 
       if (issue) {
         const { data: updatedIssue } = await axios.patch(
-          `${routes.API.ISSUES}/${issue.id}`,
+          `${routes.API.ISSUES.MAIN}/${issue.id}`,
           data
         )
         setIsSubmitting(false)
         router.push(`${routes.ISSUES.MAIN}/${updatedIssue.id}`)
       } else {
-        await axios.post(routes.API.ISSUES, data)
+        await axios.post(routes.API.ISSUES.MAIN, data)
         setIsSubmitting(false)
         router.push(`${routes.ISSUES.LIST}`)
         router.refresh()

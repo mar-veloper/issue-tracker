@@ -7,7 +7,10 @@ const routes = {
     NEW: '/issues/new',
   },
   API: {
-    ISSUES: '/api/issues',
+    ISSUES: {
+      MAIN: '/api/issues',
+      LATEST: '/api/issues/latest',
+    },
     AUTH: {
       SIGN_IN: '/api/auth/signin',
       SIGN_OUT: '/api/auth/signout',

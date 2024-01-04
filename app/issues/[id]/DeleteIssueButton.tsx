@@ -39,7 +39,7 @@ const DeleteIssueButton = ({ issueId }: Props) => {
   const deleteIssue = async () => {
     try {
       setIsDeleting(true)
-      await fetch(`${routes.API.ISSUES}/${issueId}`, {
+      await fetch(`${routes.API.ISSUES.MAIN}/${issueId}`, {
         method: 'DELETE',
       })
 

@@ -8,7 +8,7 @@ const useIssues = (query: string) =>
     queryKey: ['issues', query],
     staleTime: 0,
     queryFn: async () => {
-      const { data } = await axios(`${routes.API.ISSUES}?${query}`)
+      const { data } = await axios(`${routes.API.ISSUES.MAIN}?${query}`)
       return data
     },
     retry: 3,
