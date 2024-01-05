@@ -31,7 +31,7 @@ const LatestIssue = () => {
       </Heading>
       <Table.Root>
         <Table.Body>
-          {issues.data?.map((issue) => (
+          {issues.data?.map((issue, index) => (
             <Table.Row key={issue.id}>
               <Table.Cell>
                 <Flex justify="between" align="center" gap="2">
