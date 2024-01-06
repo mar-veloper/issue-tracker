@@ -1,0 +1,83 @@
+## 0.1.0 (January 06, 2024)
+  - Fix: static api
+  - Fix: Script
+  - Fix: db
+  - Update: gitignore
+  - Add: Sentry for error tracker
+  - Fix: .env file
+  - Optimize: Perfomance
+  - Add: metadata
+  - Fix: homepage layout
+  - Add: Issue chat
+  - Add: ISsue Summery
+  - Add: Latest issue table in homepage
+  - Add: latest issue api
+  - Refactor: Issue table
+  - Implement: Pagination
+  - Update: Filtering and sorting
+  - Add: Issue api pagination
+  - Add: Dummy data
+  - Fix: Filter Bug
+  - Fix: Filter Bug
+  - Fix: Sorting bug
+  - Fix: Sorting bug
+  - Add: Table sorting by column header
+  - Add: Filtering issue
+  - Add: Filter Component
+  - Refactor: Assignee file
+  - Add: Toast notification
+  - Add: Assigning an issue to user in client
+  - Update: Issue API
+  - Add: Assign issues to prisma schema
+  - Add: Data fetching with react-query
+  - Add: React Query
+  - Populate: Assignee select
+  - Add: Assignee dropdown
+  - Add: App security
+  - Refactor: Navbar
+  - Refactor: Navbar
+  - Fix: Avatar not loading
+  - Add: Dropdown Menu for User
+  - Update: Navbar layout
+  - Add: login & logout btn
+  - Add: Prisma Adapter
+  - Configure: Google Provider
+  - Add: NextAuth
+  - Fix: double loading
+  - Add: model on error
+  - Add: modal confirmation when deleting
+  - Add: Delete button
+  - Imrove: Loading exp
+  - Fix: Caching issue
+  - Update: IssueForm
+  - Add: update sepcific issue api
+  - Add: Edit issue page
+  - Refactor: Add the SRP
+  - Add: Edit button Add edit button on issue detal page
+  - Organize: imports
+  - Disable: SSR when loading markdown
+  - Add: Customized Link
+  - Add: Markdown preview
+  - Add: Styling to  Issue DP
+  - Add: Issue detail page
+  - Add: loading skeletons
+  - Add: Status badge
+  - Add: Issue list table
+  - Refactor: inline function
+  - Add: Spinner when form submit
+  - Extract: ErrorMessage Component
+  - Add: Client side validation
+  - Add: Error handling of form
+  - Add: React Form and handle form submission
+  - Add: Markdown editor
+  - Customize: Radix UI theme
+  - Add: New issue page
+  - Add: Radix UI
+  - Add: Issues api
+  - Add: Issue model in prisma
+  - Add: ORM Prisma
+  - Add: Navbar
+  - Init: Project
+  - Init: Project
+  - Initial commit from Create Next App
+
