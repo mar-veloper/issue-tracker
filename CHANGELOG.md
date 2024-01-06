@@ -1,3 +1,7 @@
+## 1.1.1 (January 06, 2024)
+  - Fix: Change log
+  - Add: versioning
+
 
 
 ## 1.0.0 (January 06, 2024)
