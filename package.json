@@ -6,8 +6,8 @@
     "dev": "next dev",
     "dev-server": "nodemon --watch prisma/schema.prisma --exec \"npm run generate && npm run dev\"",
     "generate": "npx prisma generate",
-    "build": "npx prisma generate && next build",
-    "start": "npm run build && next start",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
