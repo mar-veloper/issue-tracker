@@ -4,7 +4,7 @@ import routes from '@/app/routes'
 import { Table } from '@radix-ui/themes'
 import moment from 'moment'
 import Link from 'next/link'
-import { useIssueContext } from '../../list/IssueContext'
+import { useIssueContext } from '../../../contexts/IssueContext'
 
 const IssueTableBody = () => {
   const { issues } = useIssueContext()

@@ -1,21 +1,23 @@
 'use client'
 import { Card } from '@radix-ui/themes'
-import { IssueStatusProps } from './types'
-import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar } from 'recharts'
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
+import { useIssueContext } from '../contexts/IssueContext'
 
-const IssueChart = ({ closed, inProgress, open }: IssueStatusProps) => {
+const IssueChart = () => {
+  const { openCount, closedCount, inProgressCount } = useIssueContext()
+
   const data = [
     {
       label: 'Open',
-      value: open,
+      value: openCount,
     },
     {
       label: 'In Progress',
-      value: inProgress,
+      value: inProgressCount,
     },
     {
       label: 'Closed',
-      value: closed,
+      value: closedCount,
     },
   ]
   return (

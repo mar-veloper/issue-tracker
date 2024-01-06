@@ -1,8 +1,9 @@
+'use client'
 import { Status } from '@prisma/client'
 import { Card, Flex, Text } from '@radix-ui/themes'
 import Link from 'next/link'
+import { useIssueContext } from '../contexts/IssueContext'
 import routes from '../routes'
-import { IssueStatusProps } from './types'
 
 interface Container {
   label: string
@@ -10,21 +11,23 @@ interface Container {
   issue: Status
 }
 
-const IssueSummary = ({ closed, inProgress, open }: IssueStatusProps) => {
+const IssueSummary = () => {
+  const { openCount, closedCount, inProgressCount } = useIssueContext()
+
   const containers: Container[] = [
     {
       label: 'Open Issues',
-      count: open,
+      count: openCount,
       issue: Status.OPEN,
     },
     {
       label: 'In Progress Issues',
-      count: inProgress,
+      count: inProgressCount,
       issue: Status.IN_PROGRESS,
     },
     {
       label: 'Closed Issues',
-      count: closed,
+      count: closedCount,
       issue: Status.CLOSED,
     },
   ]

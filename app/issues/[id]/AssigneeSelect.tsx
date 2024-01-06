@@ -5,7 +5,7 @@ import { Issue } from '@prisma/client'
 import { Select } from '@radix-ui/themes'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
-import useUsers from './useUsers'
+import useUsers from '../../hooks/useUsers'
 
 interface Props {
   issue: Issue

@@ -1,7 +1,7 @@
 'use client'
 import Pagination from '@/app/components/Pagination'
 import React from 'react'
-import { useIssueContext } from './IssueContext'
+import { useIssueContext } from '../../contexts/IssueContext'
 
 const IssuePagination = () => {
   const { count, maxPage, currentPage, isLoading } = useIssueContext()

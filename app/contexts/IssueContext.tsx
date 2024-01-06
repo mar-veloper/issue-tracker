@@ -6,12 +6,17 @@ import {
 } from '@/app/types/issue.types'
 import { useSearchParams } from 'next/navigation'
 import React, { ReactNode, createContext, useContext } from 'react'
-import useIssues from './useIssues'
+import useIssues from '../hooks/useIssues'
+import { Status } from '@prisma/client'
+import useStatusCount from '../hooks/useStatusCount'
 
 interface IssueContextType extends IssueDataProps {
   toggleSortOrder: () => IssueSortOrder
   error: unknown
   isLoading: boolean
+  openCount: number
+  closedCount: number
+  inProgressCount: number
 }
 const IssueContext = createContext<IssueContextType>({} as IssueContextType)
 
@@ -22,6 +27,10 @@ interface IssueProviderProps {
 export const IssueContextProvider: React.FC<IssueProviderProps> = ({
   children,
 }) => {
+  const { data: openStatusCount } = useStatusCount(Status.OPEN)
+  const { data: countStatusCount } = useStatusCount(Status.CLOSED)
+  const { data: inProgressStatusCount } = useStatusCount(Status.IN_PROGRESS)
+
   const searchParams = useSearchParams()
   const params = new URLSearchParams(searchParams)
   const query = params.size ? `${params.toString()}` : ''
@@ -56,6 +65,9 @@ export const IssueContextProvider: React.FC<IssueProviderProps> = ({
     status,
     sortOrder: sortOrder || defaultSortOrder,
     currentPage: currentPage || 1,
+    openCount: Number(openStatusCount) || 0,
+    closedCount: Number(countStatusCount) || 0,
+    inProgressCount: Number(inProgressStatusCount) || 0,
   }
 
   return (

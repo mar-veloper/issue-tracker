@@ -7,7 +7,7 @@ import {
 import { ArrowDownIcon, ArrowUpIcon } from '@radix-ui/react-icons'
 import { Flex, Table } from '@radix-ui/themes'
 import NextLink from 'next/link'
-import { useIssueContext } from '../../list/IssueContext'
+import { useIssueContext } from '../../../contexts/IssueContext'
 
 interface Props {
   searchParams: IssueQuery

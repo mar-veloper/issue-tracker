@@ -1,6 +1,6 @@
 'use client'
 import { Table } from '@radix-ui/themes'
-import { useIssueContext } from '../../list/IssueContext'
+import { useIssueContext } from '../../../contexts/IssueContext'
 import IssueTableSkeleton from '../IssueTableSkeleton'
 
 interface Props {

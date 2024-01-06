@@ -10,6 +10,7 @@ const routes = {
     ISSUES: {
       MAIN: '/api/issues',
       LATEST: '/api/issues/latest',
+      STATUS_COUNT: '/api/issues/status/count',
     },
     AUTH: {
       SIGN_IN: '/api/auth/signin',
