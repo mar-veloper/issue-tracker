@@ -1,6 +1,14 @@
 # Issue Tracker
 
-> Building an issue tracker application using Next JS
+> Building an issue tracker application using Next JS. 
+
+## Notable Tech and tools: 
+
+1. Frontend and backend: (Next JS APP Router)[https://nextjs.org/docs)
+2. ORM: [Prisma](https://www.prisma.io/)
+3. Database: MySQL deployed on [Planet Scale](https://planetscale.com/)
+4. Authentication: [NextAuth](https://next-auth.js.org/)
+5. Styles: [Tailwind](https://tailwindcss.com/) with [Radix UI](https://www.radix-ui.com/)
 
 ## Getting Started
 
